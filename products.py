@@ -208,7 +208,7 @@ def generate_products_for_category(country_name: str,
         price_end = price_end * (1 + inflation)
         product = {
             'id': fake.uuid4(),
-            'name': fake.bs().title(),
+            'product_name': fake.bs().title(),
             'description': fake.sentence(),
             'category': category,
             'subcategory': random.choice(list(subcategories.keys())),

@@ -16,3 +16,5 @@ to do:
 - add expenses: how much a supplier is selling the product,
 - add gross margine
 - Tables : transactions, products/items, suppliers, stores, (expenses ?)
+- make sure the product name reflects its category and subcategory.
+- improve performance by implmementing functions in parallel?

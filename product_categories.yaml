@@ -53,3 +53,17 @@ categories:
     Books & Ebooks: [1, 500]
     CDs & Vinyl Records: [1, 200]
     DVDs & Blu-ray Discs: [5, 200]
+  Office & Stationery:
+    Office Supplies: [1, 100]
+    Office Electronics: [20, 5000]
+    School Supplies: [1, 200]
+    Art Supplies: [1, 500]
+    Paper Products: [1, 200]
+    Office Furniture: [50, 5000]
+  Grocery & Gourmet Foods:
+    Beverages: [1, 100]
+    Snacks & Sweets: [1, 100]
+    Pantry Staples: [1, 200]
+    Baking & Cooking Supplies: [1, 200]
+    Organic & Healthy Foods: [1, 300]
+    International Foods: [1, 300]
