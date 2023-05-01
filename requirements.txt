@@ -11,3 +11,8 @@ pycountry-convert==0.7.2
 countryinfo==0.1.2
 countryinfo==0.1.2
 tqdm==4.65.0
+openai==0.27.5
+reportlab==3.6.13
+PyPDF4==1.27.0
+python-dotenv==1.0.0
+pandas==2.0.1

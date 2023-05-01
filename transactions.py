@@ -51,17 +51,15 @@ def save_transactions_to_parquet(products: list, file_path: str) -> None:
     """
     df = pd.DataFrame(products)
     columns = ['price', 'currency', 'total', 'product_id', 'quantity', 'product_name']
-    print(df[columns].head())
-    exit()
     df.to_parquet(file_path)
 
-
+if __name__ == "__main__":
 # Example usage:
-num_transactions = 100
-country_name = 'United States'
-category = 'Grocery & Gourmet Foods'
-num_products = 10
-products = generate_products_for_category(country_name, category, num_products)
-transactions = generate_transactions(products, num_transactions)
+    num_transactions = 100
+    country_name = 'Norway'
+    category = 'Grocery & Gourmet Foods'
+    num_products = 10
+    products = generate_products_for_category(country_name, category, num_products)
+    transactions = generate_transactions(products, num_transactions)
 
-save_transactions_to_parquet(transactions, 'transactions.parquet')
+    save_transactions_to_parquet(transactions, 'transactions.parquet')
