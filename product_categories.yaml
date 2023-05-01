@@ -1,72 +1,55 @@
 categories:
-  - Electronics:
-      - Mobile Phones & Accessories
-      - Computers & Accessories
-      - Audio & Video Equipment
-      - Cameras & Photography
-      - Gaming & Consoles
-      - Smart Home Devices
-  - Clothing & Accessories:
-      - Men's Clothing
-      - Women's Clothing
-      - Children's Clothing
-      - Footwear
-      - Bags & Luggage
-      - Jewelry & Watches
-      - Eyewear
-  - Home & Kitchen:
-      - Kitchen Appliances
-      - Home Appliances
-      - Cookware & Bakeware
-      - Tableware
-      - Storage & Organization
-      - Home Decor & Furnishings
-  - Health & Beauty:
-      - Personal Care Appliances
-      - Makeup & Cosmetics
-      - Skincare
-      - Hair Care
-      - Fragrances
-      - Health & Wellness Products
-  - Sports & Outdoors:
-      - Fitness Equipment
-      - Camping & Hiking Gear
-      - Cycling
-      - Water Sports
-      - Team Sports Equipment
-      - Outdoor Recreation
-  - Toys & Games:
-      - Action Figures & Collectibles
-      - Board Games & Puzzles
-      - Building Sets & Blocks
-      - Educational Toys
-      - Electronic & Interactive Toys
-      - Outdoor Play Equipment
-  - Automotive:
-      - Car Electronics & Accessories
-      - Car Parts & Components
-      - Motorcycle & ATV Parts
-      - Tires & Wheels
-      - Tools & Equipment
-      - Exterior & Interior Accessories
-  - Books, Music, & Movies:
-      - Books & Ebooks
-      - CDs & Vinyl Records
-      - DVDs & Blu-ray Discs
-      - Magazines & Newspapers
-      - Musical Instruments
-      - Digital Downloads
-  - Office & Stationery:
-      - Office Supplies
-      - Office Electronics
-      - School Supplies
-      - Art Supplies
-      - Paper Products
-      - Office Furniture
-  - Grocery & Gourmet Foods:
-      - Beverages
-      - Snacks & Sweets
-      - Pantry Staples
-      - Baking & Cooking Supplies
-      - Organic & Healthy Foods
-      - International Foods
+  Electronics:
+    Mobile Phones & Accessories: [10, 2000]
+    Computers & Accessories: [10, 5000]
+    Audio & Video Equipment: [10, 10000]
+    Cameras & Photography: [50, 10000]
+    Gaming & Consoles: [50, 1000]
+    Smart Home Devices: [20, 2000]
+  Clothing & Accessories:
+    Men's Clothing: [5, 2000]
+    Women's Clothing: [5, 2000]
+    Children's Clothing: [5, 500]
+    Footwear: [10, 2000]
+    Bags & Luggage: [10, 5000]
+    Jewelry & Watches: [10, 50000]
+    Eyewear: [10, 1000]
+  Home & Kitchen:
+    Kitchen Appliances: [10, 10000]
+    Home Appliances: [50, 10000]
+    Cookware & Bakeware: [5, 1000]
+    Tableware: [5, 1000]
+    Storage & Organization: [5, 500]
+    Home Decor & Furnishings: [5, 5000]
+  Health & Beauty:
+    Personal Care Appliances: [10, 500]
+    Makeup & Cosmetics: [5, 200]
+    Skincare: [5, 500]
+    Hair Care: [5, 500]
+    Fragrances: [10, 500]
+    Health & Wellness Products: [5, 1000]
+  Sports & Outdoors:
+    Fitness Equipment: [10, 10000]
+    Camping & Hiking Gear: [5, 2000]
+    Cycling: [10, 10000]
+    Water Sports: [10, 5000]
+    Team Sports Equipment: [10, 5000]
+    Outdoor Recreation: [10, 10000]
+  Toys & Games:
+    Action Figures & Collectibles: [5, 1000]
+    Board Games & Puzzles: [5, 500]
+    Building Sets & Blocks: [5, 500]
+    Educational Toys: [5, 500]
+    Electronic & Interactive Toys: [10, 1000]
+    Outdoor Play Equipment: [10, 5000]
+  Automotive:
+    Car Electronics & Accessories: [10, 2000]
+    Car Parts & Components: [10, 10000]
+    Motorcycle & ATV Parts: [10, 5000]
+    Tires & Wheels: [50, 2000]
+    Tools & Equipment: [10, 5000]
+    Exterior & Interior Accessories: [5, 1000]
+  Books, Music, & Movies:
+    Books & Ebooks: [1, 500]
+    CDs & Vinyl Records: [1, 200]
+    DVDs & Blu-ray Discs: [5, 200]

@@ -9,3 +9,5 @@ to do:
 - add country to product
 - add region
 - add store
+- add inflation for country
+- add ditribution for price? or find out how to add this
