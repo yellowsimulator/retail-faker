@@ -76,6 +76,7 @@ def load_subcategories_from_yaml(file_path: str, category: str) -> dict:
             return cat[category]
     return []
 
+
 def generate_products_for_category(category,
                                    num_products=10,
                                    yaml_file_path='product_categories.yaml') -> list:
