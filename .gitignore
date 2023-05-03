@@ -162,3 +162,5 @@ cython_debug/
 *.parquet
 *.pdf
 ml
+shap
+retail_data

@@ -1,15 +1,37 @@
+import time
+import yaml
+import random
+import requests
 import pycountry
 import pandas as pd
-import yaml
-import requests
+import geopandas as gpd
+from pathlib import Path
 from datetime import datetime
+from shapely.geometry import Point
 from countryinfo import CountryInfo
 from forex_python.converter import CurrencyRates
-import geonamescache
 
-import geopandas as gpd
-import random
-from shapely.geometry import Point
+
+
+
+def timer_decorator(func):
+    """A decorator that prints the execution time of a function.
+
+    Usage
+    -----
+    @timer_decorator
+    def my_function():
+        pass
+    """
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"Execution time for {func.__name__}: {elapsed_time:.4f} seconds")
+        return result
+    return wrapper
+
 
 def generate_random_coords_in_region(country_name: str,
                                      region_name: str, num_points: int):
@@ -30,14 +52,11 @@ def generate_random_coords_in_region(country_name: str,
     shapefile_path = "shap/ne_10m_admin_1_states_provinces.shp"
     gdf = gpd.read_file(shapefile_path)
 
-    # Find the specified region in the shapefile
     region = gdf[(gdf['admin'] == country_name) & (gdf['name'] == region_name)].iloc[0]
 
-    # Get the bounding box of the region
     bbox = region.geometry.bounds
     min_x, min_y, max_x, max_y = bbox
 
-    # Generate random latitude and longitude coordinates within the bounding box
     random_points = []
     while len(random_points) < num_points:
         random_lat = random.uniform(min_y, max_y)
@@ -51,9 +70,8 @@ def generate_random_coords_in_region(country_name: str,
     return random_points
 
 
-
-
-def load_subcategories_from_yaml(file_path: str, category: str) -> dict:
+def load_subcategories_from_yaml(category: str,
+                                 file_path: str='configs/products_configs.yaml') -> dict:
     """Loads subcategories from a yaml file.
 
     Parameters
@@ -65,16 +83,12 @@ def load_subcategories_from_yaml(file_path: str, category: str) -> dict:
     -------
         subcategories: the subcategories of the given category
     """
+    file_path = Path(file_path)
     with open(file_path, 'r') as f:
         categories_data = yaml.safe_load(f)
-
-    # Access the 'categories' key directly, as the new YAML format has a 'categories' key at the top level
     categories = categories_data['categories']
-
-    # Check if the requested category exists in the categories dictionary, and return its subcategories if it does
     if category in categories:
         return categories[category]
-
     return {}
 
 
@@ -96,7 +110,7 @@ def get_regions_of_country(country_name: str) -> list:
     return country_subdivisions
 
 
-def load_categories_from_yaml(file_path: str) -> list:
+def load_categories_from_yaml(file_path: str='configs/products_configs.yaml') -> list:
     """Loads product categories from a yaml file.
 
     Parameters
@@ -107,13 +121,11 @@ def load_categories_from_yaml(file_path: str) -> list:
     -------
         categories: the product categories
     """
+    file_path = Path(file_path)
     with open(file_path, 'r') as f:
         categories_data = yaml.safe_load(f)
-    categories = []
-    for category in categories_data['categories']:
-        categories.extend(category.keys())
+    categories = list(categories_data['categories'].keys())
     return categories
-
 
 
 def get_country_code(country_name: str) -> str:
@@ -127,8 +139,12 @@ def get_country_code(country_name: str) -> str:
     -------
         country_code: the country code for the given country name
     """
-    country = pycountry.countries.get(name=country_name)
-    return country.alpha_2
+    try:
+        country = pycountry.countries.get(name=country_name)
+        return country.alpha_2
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
 
 
 def get_currency_code(country_name: str) -> str:
@@ -152,6 +168,18 @@ def get_currency_code(country_name: str) -> str:
         print(f"Error: {e}")
         return None
 
+
+def get_exchange_rate(country_name: str) -> float:
+    """Returns the exchange rate for a given country name.
+    """
+    country_currency_code = get_currency_code(country_name)
+    currency_rates = CurrencyRates()
+    try:
+        exchange_rate = currency_rates.get_rate(country_currency_code, 'USD')
+        return exchange_rate
+    except Exception as e:
+        print(f"Error fetching exchange rate for {country_currency_code}: {e}")
+        return None
 
 
 def convert_usd_to_local(amount_usd: float, country_name: str) -> float:
@@ -183,14 +211,11 @@ def convert_usd_to_local(amount_usd: float, country_name: str) -> float:
 
 
 def get_inflation_rate(country_name: str) -> pd.DataFrame:
-    """Returns the inflation rate for a given country code and time period.
+    """Returns the inflation rate for a given country name.
 
     Parameters
     ----------
         country_code: the country code to get the inflation rate for
-        start_year: the start year of the time period
-        end_year: the end year of the time period
-
     Returns
     -------
         df: the inflation rate for the given country code and time period
@@ -208,12 +233,28 @@ def get_inflation_rate(country_name: str) -> pd.DataFrame:
         df.columns = ['Country Code', 'Year', 'Inflation Rate']
         inflation_rate = df['Inflation Rate'].iloc[0]
         return inflation_rate/100.0
-    else:
-        print("Data not available.")
+    return None
 
 
+def get_cities_in_subdivision(country_name: str,
+                              subdivision_name: str,
+                              username: str='retail_faker') -> list:
+    """Returns the cities in a given subdivision of a given country.
 
-def get_cities_in_subdivision(country_name, subdivision_name, username='retail_faker'):
+    Parameters
+    ----------
+        country_name: the name of the country to get the cities for
+        subdivision_name: the name of the subdivision to get the cities for
+        username: the username to use for the GeoNames API
+
+    Returns
+    -------
+        cities: the cities in the given subdivision of the given country
+
+    Nonte
+    -----
+    This function is not working properly yet!
+    """
     url = "http://api.geonames.org/searchJSON"
     country_code = get_country_code(country_name)
     params = {
@@ -221,11 +262,9 @@ def get_cities_in_subdivision(country_name, subdivision_name, username='retail_f
         "adminName1": subdivision_name,
         "featureClass": "P",  # Populated place
         "username": username,
-        "maxRows": 1000,  # Increase or decrease as needed
+        "maxRows": 1000,
     }
-
     response = requests.get(url, params=params)
-
     if response.status_code == 200:
         data = response.json()
         cities = [city["name"] for city in data["geonames"]]
@@ -237,24 +276,11 @@ def get_cities_in_subdivision(country_name, subdivision_name, username='retail_f
 
 
 
-
-
-
-
 if __name__=='__main__':
-    shapefile_path = "shap/ne_10m_admin_1_states_provinces.shp"  # Replace with the path to your shapefile
-    country_name = "United States of America"
-    region_name = "California"
-    num_points = 100
 
-    random_coords = generate_random_coords_in_region(shapefile_path, country_name, region_name, num_points)
-    print(random_coords)
-
-
-
-    country_name = "Norway"
-    subdivision_name = "California"
-
-#    cities = get_cities_in_subdivision(country_name, subdivision_name)
+    categories = load_categories_from_yaml()
+    category = 'Electronics'
+    subcategories = load_subcategories_from_yaml(category)
+    print(subcategories)
 #    print(cities)
 

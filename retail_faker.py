@@ -1,43 +1,37 @@
-import random
-import pycountry
 
-class FakeRetailDataset:
-    def __init__(self, num_customers, num_products, num_transactions):
-        self.customers = self.generate_customers(num_customers)
-        self.products = self.generate_products(num_products)
-        self.transactions = self.generate_transactions(num_transactions)
+from products import generate_random_product_data
+from transactions import generate_random_transaction_data
+from stores import generate_random_store_data
 
-    def generate_customers(self, num_customers):
-        customers = []
-        # Generate customer data here
-        return customers
 
-    def generate_products(self, num_products):
-        products = []
-        # Generate product data here
-        return products
 
-    def generate_transactions(self, num_transactions):
-        transactions = []
-        # Generate transaction data here
-        return transactions
+def generate_random_retail_data(country_name: str,
+                                num_stores: int,
+                                num_products: int,
+                                num_transactions: int):
+    """Generates random retail data for a given country.
 
-    def geneate_stores(self):
-        # Generate store data here
-        stores = []
-        return stores
+    Parameters
+    ----------
+        country_name: the country to generate retail data for
+        num_stores: the number of stores to generate
+        num_products: the number of products to generate
+        num_transactions: the number of transactions to generate
 
-    def generate_product_category(self):
-        # Generate product category data here
-        product_categories = []
-        return product_categories
+    Returns
+    -------
+        stores: the generated stores
+        products: the generated products
+        transactions: the generated transactions
+    """
+    generate_random_product_data(country_name, num_products, is_saved=True)
+    generate_random_store_data(country_name, num_stores, is_saved=True)
+    generate_random_transaction_data(num_transactions, is_saved=True)
 
-    def gnerate_regions(self):
-        # Generate region data here
-        regions = []
-        return regions
 
-   
-
-# Example usage
-fake_retail_data = FakeRetailDataset(100, 200, 1000)
+if __name__ == "__main__":
+    country_name = 'United States'
+    num_stores = 100
+    num_products = 100
+    num_transactions = 100
+    generate_random_retail_data(country_name, num_stores, num_products, num_transactions)

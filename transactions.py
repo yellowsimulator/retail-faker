@@ -1,11 +1,17 @@
 import uuid
-from random import choice, randint
-from datetime import datetime, timedelta
+import random
 import pandas as pd
-from products import generate_products_for_category
+from tqdm import tqdm
+from faker import Faker
+import pyarrow as pa
+from pathlib import Path
+import pyarrow.parquet as pq
+from datetime import datetime, timedelta
+from products import generate_random_product_data
+fake = Faker()
 
 
-def generate_transactions(products: list, num_transactions: int):
+def generate_random_transaction_data(num_transactions: int, is_saved: bool = False):
     """Generate a list of transactions for customers.
 
     Parameters
@@ -17,49 +23,41 @@ def generate_transactions(products: list, num_transactions: int):
     -------
         a list of transactions as dictionaries
     """
+    file_path = Path('retail_data/products.parquet')
+    products = pd.read_parquet('products.parquet')
+    m = len(products)
     transactions = []
+    numb = f'{num_transactions:,}'.replace(',', ' ')
 
-    for _ in range(num_transactions):
-        product = choice(products)
+    for k in tqdm(range(num_transactions), desc=f"Generating {numb} transactions"):
         transaction_id = str(uuid.uuid4())
-        timestamp = datetime.now() - timedelta(days=randint(0, 365))
-        quantity = randint(1, 10)
-
+        timestamp = datetime.now() - timedelta(days=random.randint(0, 365))
+        quantity = random.randint(1, 30)
+        random_product_row = products.sample(n=1)
         transaction = {
             'transaction_id': transaction_id,
             'timestamp': timestamp.strftime('%Y-%m-%d %H:%M:%S'),
-            'product_id': product['id'],
-            'product_name': product['product_name'],
+            'product_id': random_product_row.iloc[0]['product_id'],
+            'product_name': random_product_row.iloc[0]['product_name'],
             'quantity': quantity,
-            'price': product['price'],
-            'currency': product['currency'],
-            'total': round(quantity * product['price'], 2)
+            'price': random_product_row.iloc[0]['price_in_usd']*random_product_row.iloc[0]['exchange_rate'],
+            'currency': random_product_row.iloc[0]['currency'],
+            'total': round(quantity * random_product_row.iloc[0]['price_in_usd']*random_product_row.iloc[0]['exchange_rate'], 2),
         }
-
         transactions.append(transaction)
 
-    return transactions
+    df_transactions = pd.DataFrame(transactions)
+    if is_saved:
+        folder_path = Path('retail_data')
+        table = pa.Table.from_pandas(df_transactions)
+        file_path = folder_path / 'transactions.parquet'
+        pq.write_table(table, file_path)
+        return None
+    return df_transactions
 
 
-def save_transactions_to_parquet(products: list, file_path: str) -> None:
-    """Save products to a parquet file
-
-    Parameters
-    ----------
-        products : a list of product as a dictionaries
-        file_path : the path to the parquet file to save the products to
-    """
-    df = pd.DataFrame(products)
-    columns = ['price', 'currency', 'total', 'product_id', 'quantity', 'product_name']
-    df.to_parquet(file_path)
 
 if __name__ == "__main__":
-# Example usage:
-    num_transactions = 100
-    country_name = 'Norway'
-    category = 'Grocery & Gourmet Foods'
-    num_products = 10
-    products = generate_products_for_category(country_name, category, num_products)
-    transactions = generate_transactions(products, num_transactions)
+    generate_random_transaction_data(10, is_saved=True)
 
-    save_transactions_to_parquet(transactions, 'transactions.parquet')
+
