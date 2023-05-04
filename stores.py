@@ -11,6 +11,48 @@ fake = Faker()
 from helper_functions import get_regions_of_country
 from helper_functions import timer_decorator
 
+def save_store_data(stores_df: pd.DataFrame) -> None:
+    """Creates a folder `retail_data` if it doesn't exist.
+         Then saves the data in the folder as in :
+            retail_data/`stores.parquet`.
+
+    Parameters
+    ----------
+        stores_df: the stores data as a pandas DataFrame
+
+    Returns
+    -------
+        None
+    """
+    folder_path = Path('retail_data')
+    if not folder_path.exists():
+        folder_path.mkdir()
+    table = pa.Table.from_pandas(stores_df)
+    file_path = folder_path / 'stores.parquet'
+    pq.write_table(table, file_path)
+
+
+def get_regions(country_name: str):
+    """Handle the exceptions when getting the regions of a country.
+        then returns the regions of the country.
+
+    Parameters
+    ----------
+        country_name: the name of the country
+
+    Returns
+    -------
+        regions: the regions of the country
+    """
+    try:
+        regions = get_regions_of_country(country_name)
+    except:
+        print(f'No data for {country_name}!. Using United States data instead.')
+        country_name = 'United States'
+        country_name = 'United States'
+        regions = [country_name]
+    return regions, country_name
+
 
 def generate_a_row_store_data(args):
     """Genrates a single store data row.
@@ -48,34 +90,21 @@ def generate_random_store_data(country_name: str,
     -------
         stores: the generated stores
     """
-    try:
-        regions = get_regions_of_country(country_name)
-    except:
-        print(f'No data for {country_name}!. Using United States data instead.')
-        country_name = 'United States'
-        country_name = 'United States'
-        regions = [country_name]
+    regions, country_name = get_regions(country_name)
+    numb = f'{numb_stores:,}'.replace(',', ' ')
 
     with mp.Pool(mp.cpu_count()) as pool:
         args_list = [(i, country_name, regions) for i in range(numb_stores)]
 
-        numb = f'{numb_stores:,}'.replace(',', ' ')
         with tqdm(total=len(args_list), desc=f"Generating {numb} stores data") as pbar:
             result = []
             for store in pool.imap_unordered(generate_a_row_store_data, args_list):
                 result.append(store)
                 pbar.update()
+
     stores_df = pd.DataFrame(result)
-
     if is_saved:
-        folder_path = Path('retail_data')
-        if not folder_path.exists():
-            folder_path.mkdir()
-        table = pa.Table.from_pandas(stores_df)
-        file_path = folder_path / 'stores.parquet'
-        pq.write_table(table, file_path)
-        return
-
+        save_store_data(stores_df)
     return stores_df
 
 
