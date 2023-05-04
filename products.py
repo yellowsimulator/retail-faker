@@ -64,6 +64,7 @@ def generate_random_product_data(country_name: str, numb_products: int,
         stores: the generated stores
     """
     categories = load_categories_from_yaml()
+
     try:
         currency_code = get_currency_code(country_name)
         inflation = get_inflation_rate(country_name)
@@ -74,6 +75,7 @@ def generate_random_product_data(country_name: str, numb_products: int,
         currency_code = get_currency_code(country_name)
         inflation = get_inflation_rate(country_name)
         exchange_rate = get_exchange_rate(country_name)
+
     numb = f'{numb_products:,}'.replace(',', ' ')
     with mp.Pool(mp.cpu_count()) as pool:
         products = list(tqdm(pool.imap(generate_a_row_product_data,
@@ -81,6 +83,7 @@ def generate_random_product_data(country_name: str, numb_products: int,
                                          for i in range(numb_products)]),
                              total=numb_products, desc=f'Generating {numb} products data!'))
     product_df = pd.DataFrame(products)
+
     if is_saved:
         folder_path = Path('retail_data')
         if not folder_path.exists():
@@ -89,6 +92,7 @@ def generate_random_product_data(country_name: str, numb_products: int,
         file_path = folder_path / 'products.parquet'
         pq.write_table(table, file_path)
         return
+
     return product_df
 
 

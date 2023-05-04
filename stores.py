@@ -55,6 +55,7 @@ def generate_random_store_data(country_name: str,
         country_name = 'United States'
         country_name = 'United States'
         regions = [country_name]
+
     with mp.Pool(mp.cpu_count()) as pool:
         args_list = [(i, country_name, regions) for i in range(numb_stores)]
 
@@ -65,6 +66,7 @@ def generate_random_store_data(country_name: str,
                 result.append(store)
                 pbar.update()
     stores_df = pd.DataFrame(result)
+
     if is_saved:
         folder_path = Path('retail_data')
         if not folder_path.exists():
@@ -73,6 +75,7 @@ def generate_random_store_data(country_name: str,
         file_path = folder_path / 'stores.parquet'
         pq.write_table(table, file_path)
         return
+
     return stores_df
 
 
