@@ -20,27 +20,7 @@ from helper_functions import get_inflation_rate
 from helper_functions import get_currency_code
 from helper_functions import get_currency_code
 from helper_functions import get_exchange_rate
-
-
-def save_product_data(product_df: pd.DataFrame) -> None:
-    """Creates a folder `retail_data` if it doesn't exist.
-       Then saves the data in the folder as in :
-       retail_data/`products.parquet`.
-
-    Parameters
-    ----------
-        product_df: the product data as a pandas DataFrame
-
-    Returns
-    -------
-        None
-    """
-    folder_path = Path('retail_data')
-    if not folder_path.exists():
-        folder_path.mkdir()
-    table = pa.Table.from_pandas(product_df)
-    file_path = folder_path / 'products.parquet'
-    pq.write_table(table, file_path)
+from helper_functions import save_data
 
 
 def get_country_data(country_name: str) -> tuple:
@@ -118,10 +98,10 @@ def generate_random_product_data(country_name: str, numb_products: int,
                                         [(i, categories, currency_code, inflation, exchange_rate)
                                          for i in range(numb_products)]),
                              total=numb_products, desc=f'Generating {formated_nb_products} products data!'))
-    product_df = pd.DataFrame(products)
 
+    product_df = pd.DataFrame(products)
     if is_saved:
-        save_product_data(product_df)
+        save_data(product_df, 'products.parquet')
     return product_df
 
 

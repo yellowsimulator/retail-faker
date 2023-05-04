@@ -10,26 +10,7 @@ fake = Faker()
 
 from helper_functions import get_regions_of_country
 from helper_functions import timer_decorator
-
-def save_store_data(stores_df: pd.DataFrame) -> None:
-    """Creates a folder `retail_data` if it doesn't exist.
-         Then saves the data in the folder as in :
-            retail_data/`stores.parquet`.
-
-    Parameters
-    ----------
-        stores_df: the stores data as a pandas DataFrame
-
-    Returns
-    -------
-        None
-    """
-    folder_path = Path('retail_data')
-    if not folder_path.exists():
-        folder_path.mkdir()
-    table = pa.Table.from_pandas(stores_df)
-    file_path = folder_path / 'stores.parquet'
-    pq.write_table(table, file_path)
+from helper_functions import save_data
 
 
 def get_regions(country_name: str):
@@ -104,7 +85,7 @@ def generate_random_store_data(country_name: str,
 
     stores_df = pd.DataFrame(result)
     if is_saved:
-        save_store_data(stores_df)
+        save_store_data(stores_df, 'stores.parquet')
     return stores_df
 
 

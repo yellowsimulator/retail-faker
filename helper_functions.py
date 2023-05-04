@@ -4,13 +4,34 @@ import random
 import requests
 import pycountry
 import pandas as pd
+import pyarrow as pa
 import geopandas as gpd
 from pathlib import Path
+import pyarrow.parquet as pq
 from datetime import datetime
 from shapely.geometry import Point
 from countryinfo import CountryInfo
 from forex_python.converter import CurrencyRates
 
+def save_data(df: pd.DataFrame, file_path: str) -> None:
+    """Creates a folder `retail_data` if it doesn't exist.
+         Then saves the data in the folder as in :
+            retail_data/`stores.parquet`.
+
+    Parameters
+    ----------
+        df: the stores data as a pandas DataFrame
+
+    Returns
+    -------
+        None
+    """
+    folder_path = Path('retail_data')
+    if not folder_path.exists():
+        folder_path.mkdir()
+    table = pa.Table.from_pandas(df)
+    save_to = folder_path / file_path
+    pq.write_table(table, save_to)
 
 
 
