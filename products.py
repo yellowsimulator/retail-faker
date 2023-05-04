@@ -43,6 +43,32 @@ def save_product_data(product_df: pd.DataFrame) -> None:
     pq.write_table(table, file_path)
 
 
+def get_country_data(country_name: str) -> tuple:
+    """Returns the contry data after handling the exceptions.
+
+    Parameters
+    ----------
+        country_name: the name of the country
+
+    Returns
+    -------
+        a tuple of (currency_code, inflation, exchange_rate)
+    """
+    try:
+        currency_code = get_currency_code(country_name)
+        inflation = get_inflation_rate(country_name)
+        exchange_rate = get_exchange_rate(country_name)
+    except:
+        print(f'No data for {country_name}!. Using United States data instead.')
+        country_name = 'United States'
+        currency_code = get_currency_code(country_name)
+        inflation = get_inflation_rate(country_name)
+        exchange_rate = get_exchange_rate(country_name)
+
+    return currency_code, inflation, exchange_rate
+
+
+
 def generate_a_row_product_data(args):
     """Genrates a single product data row.
     """
@@ -84,19 +110,9 @@ def generate_random_product_data(country_name: str, numb_products: int,
         stores: the generated stores
     """
     categories = load_categories_from_yaml()
-
-    try:
-        currency_code = get_currency_code(country_name)
-        inflation = get_inflation_rate(country_name)
-        exchange_rate = get_exchange_rate(country_name)
-    except:
-        print(f'No data for {country_name}!. Using United States data instead.')
-        country_name = 'United States'
-        currency_code = get_currency_code(country_name)
-        inflation = get_inflation_rate(country_name)
-        exchange_rate = get_exchange_rate(country_name)
-
+    currency_code, inflation, exchange_rate = get_country_data(country_name)
     numb = f'{numb_products:,}'.replace(',', ' ')
+
     with mp.Pool(mp.cpu_count()) as pool:
         products = list(tqdm(pool.imap(generate_a_row_product_data,
                                         [(i, categories, currency_code, inflation, exchange_rate)
