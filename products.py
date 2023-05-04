@@ -111,13 +111,13 @@ def generate_random_product_data(country_name: str, numb_products: int,
     """
     categories = load_categories_from_yaml()
     currency_code, inflation, exchange_rate = get_country_data(country_name)
-    numb = f'{numb_products:,}'.replace(',', ' ')
+    formated_nb_products = f'{numb_products:,}'.replace(',', ' ')
 
     with mp.Pool(mp.cpu_count()) as pool:
         products = list(tqdm(pool.imap(generate_a_row_product_data,
                                         [(i, categories, currency_code, inflation, exchange_rate)
                                          for i in range(numb_products)]),
-                             total=numb_products, desc=f'Generating {numb} products data!'))
+                             total=numb_products, desc=f'Generating {formated_nb_products} products data!'))
     product_df = pd.DataFrame(products)
 
     if is_saved:
