@@ -13,5 +13,9 @@ The main entry point is the module *retail_faker.py. This module relies on three
 ### To do list
 
 - Create a machine learning model that generate realistic product names based on country, product category and product subcategory
-- Refactor the code and improve redability
+- Refactor the code and improve readability
 - Refactor the code and improve performance
+- clean up exception handling
+- Use config files for products, transactions, and stores?
+- Add/remove some tables from products, transactions and stores
+- Add supplier tables
