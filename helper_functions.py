@@ -300,10 +300,5 @@ def get_cities_in_subdivision(country_name: str,
 
 
 if __name__=='__main__':
-
-    categories = load_categories_from_yaml()
-    category = 'Electronics'
-    subcategories = load_subcategories_from_yaml(category)
-    print(subcategories)
-#    print(cities)
+    ...
 
