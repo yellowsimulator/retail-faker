@@ -85,7 +85,7 @@ def generate_random_store_data(country_name: str,
 
     stores_df = pd.DataFrame(result)
     if is_saved:
-        save_store_data(stores_df, 'stores.parquet')
+        save_data(stores_df, 'stores.parquet')
     return stores_df
 
 
