@@ -21,7 +21,7 @@ def save_data(df: pd.DataFrame, file_path: str) -> None:
 
     Parameters
     ----------
-        df: the stores data as a pandas DataFrame
+        df: the data as a pandas DataFrame
 
     Returns
     -------
