@@ -19,3 +19,8 @@ The main entry point is the module *retail_faker.py. This module relies on three
 - Use config files for products, transactions, and stores?
 - Add/remove some tables from products, transactions and stores
 - Add supplier tables
+
+
+# Notes:
+
+If you have problems installing the requirements with `pip install -r requirements.txt  `then install the failed packages one at the time
