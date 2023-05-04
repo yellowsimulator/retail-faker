@@ -22,3 +22,14 @@ geopy==2.3.0
 geocoder==1.38.1
 geocoder==1.38.1
 geopandas==0.12.2
+pandas-profiling==3.6.6
+weasyprint==58.1
+sweetviz==2.1.4
+pdfkit==1.0.0
+pdfkit==1.0.0
+transformers==4.28.1
+sentencepiece==0.1.99
+torchvision==0.15.1
+torch==2.0.0
+torchvision==0.15.1
+datasets==2.12.0
