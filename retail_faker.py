@@ -41,13 +41,3 @@ if __name__ == "__main__":
     df = pd.read_parquet('retail_data/transactions.parquet')
     print(df.head())
 
-    result = df.groupby('transaction_id').agg({'total': 'sum',
-                                               'transaction_id': 'count',
-                                               'currency': 'first',
-                                               'exchange_rate': 'first',
-                                               'inflation_rate': 'first'})
-    result = result.rename(columns={'transaction_id': 'numb_of_transactions'})
-    columns_to_display = ['numb_of_transactions', 'total', 'currency', 'exchange_rate', 'inflation_rate']
-    print(result[columns_to_display])
-    # how many unique customers?
-    #print(df['transaction_id'].nunique())
