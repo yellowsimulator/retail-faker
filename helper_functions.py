@@ -17,7 +17,7 @@ from forex_python.converter import CurrencyRates
 def save_data(df: pd.DataFrame, file_path: str) -> None:
     """Creates a folder `retail_data` if it doesn't exist.
          Then saves the data in the folder as in :
-            retail_data/`stores.parquet`.
+            retail_data/`file_name.parquet`.
 
     Parameters
     ----------
