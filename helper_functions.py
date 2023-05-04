@@ -13,6 +13,7 @@ from shapely.geometry import Point
 from countryinfo import CountryInfo
 from forex_python.converter import CurrencyRates
 
+
 def save_data(df: pd.DataFrame, file_path: str) -> None:
     """Creates a folder `retail_data` if it doesn't exist.
          Then saves the data in the folder as in :

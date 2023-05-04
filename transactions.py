@@ -8,6 +8,7 @@ from pathlib import Path
 import pyarrow.parquet as pq
 from datetime import datetime, timedelta
 from products import generate_random_product_data
+from helper_functions import save_data
 fake = Faker()
 
 
@@ -62,15 +63,10 @@ def generate_random_transaction_data(num_transactions: int,
             'total': total
         }
         transactions.append(transaction)
+
     df_transactions = pd.DataFrame(transactions)
-
     if is_saved:
-        folder_path = Path('retail_data')
-        table = pa.Table.from_pandas(df_transactions)
-        file_path = folder_path / 'transactions.parquet'
-        pq.write_table(table, file_path)
-        return None
-
+        save_data(df_transactions, 'transactions.parquet')
     return df_transactions
 
 
