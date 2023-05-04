@@ -1,20 +1,16 @@
 # retail-faker
 
-fake retail dataset for experimenting new ideas
+This is a package to generate fake retail data. It is based upon the python library Faker. Although still in development, you can start using it.
+
+The main entry point is the moduel *retail_faker.py.* You can run this file and the program will generate three parquets files in the folder retail_data: *retail_data/products.parquet, retail_data/stores.parquet, retail_data/transactions.*
 
 
-to do:
+### Contribution
 
-- a user should be able to add new product categories and sub-categories
-- add country to product
-- add region
-- add store
-- add ditribution for price? or find out how to add this
-- create customers transaction table that (add foreign key, primary key in order to merge them)
-- add suppliers (this can be added at the product level)
-- add discount or/and promotion (how can we add this info, and where?)
-- add expenses: how much a supplier is selling the product,
-- add gross margine
-- Tables : transactions, products/items, suppliers, stores, (expenses ?)
-- make sure the product name reflects its category and subcategory.
-- improve performance by implmementing functions in parallel?
+- clone the repo
+- install requirement
+- create a feature branch or improve it
+
+### To do list
+
+- create a machine learning model that generate realistic product names based on country, product category and product subcategory

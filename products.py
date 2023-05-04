@@ -64,9 +64,16 @@ def generate_random_product_data(country_name: str, numb_products: int,
         stores: the generated stores
     """
     categories = load_categories_from_yaml()
-    currency_code = get_currency_code(country_name)
-    inflation = get_inflation_rate(country_name)
-    exchange_rate = get_exchange_rate(country_name)
+    try:
+        currency_code = get_currency_code(country_name)
+        inflation = get_inflation_rate(country_name)
+        exchange_rate = get_exchange_rate(country_name)
+    except:
+        print(f'No data for {country_name}!. Using United States data instead.')
+        country_name = 'United States'
+        currency_code = get_currency_code(country_name)
+        inflation = get_inflation_rate(country_name)
+        exchange_rate = get_exchange_rate(country_name)
     numb = f'{numb_products:,}'.replace(',', ' ')
     with mp.Pool(mp.cpu_count()) as pool:
         products = list(tqdm(pool.imap(generate_a_row_product_data,

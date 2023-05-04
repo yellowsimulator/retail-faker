@@ -48,7 +48,13 @@ def generate_random_store_data(country_name: str,
     -------
         stores: the generated stores
     """
-    regions = get_regions_of_country(country_name)
+    try:
+        regions = get_regions_of_country(country_name)
+    except:
+        print(f'No data for {country_name}!. Using United States data instead.')
+        country_name = 'United States'
+        country_name = 'United States'
+        regions = [country_name]
     with mp.Pool(mp.cpu_count()) as pool:
         args_list = [(i, country_name, regions) for i in range(numb_stores)]
 

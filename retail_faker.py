@@ -8,7 +8,8 @@ from stores import generate_random_store_data
 def generate_random_retail_data(country_name: str,
                                 num_stores: int,
                                 num_products: int,
-                                num_transactions: int):
+                                num_transactions: int,
+                                numb_unique_ids: int):
     """Generates random retail data for a given country.
 
     Parameters
@@ -26,12 +27,27 @@ def generate_random_retail_data(country_name: str,
     """
     generate_random_product_data(country_name, num_products, is_saved=True)
     generate_random_store_data(country_name, num_stores, is_saved=True)
-    generate_random_transaction_data(num_transactions, is_saved=True)
+    generate_random_transaction_data(num_transactions, numb_unique_ids, is_saved=True)
 
 
 if __name__ == "__main__":
-    country_name = 'United States'
+    import pandas as pd
+    country_name = 'Denmark'
     num_stores = 100
-    num_products = 100
-    num_transactions = 100
-    generate_random_retail_data(country_name, num_stores, num_products, num_transactions)
+    num_products = 10000
+    num_transactions = 1000
+    numb_unique_ids = 20
+    generate_random_retail_data(country_name, num_stores, num_products, num_transactions, numb_unique_ids)
+    df = pd.read_parquet('retail_data/transactions.parquet')
+    print(df.head())
+
+    result = df.groupby('transaction_id').agg({'total': 'sum',
+                                               'transaction_id': 'count',
+                                               'currency': 'first',
+                                               'exchange_rate': 'first',
+                                               'inflation_rate': 'first'})
+    result = result.rename(columns={'transaction_id': 'numb_of_transactions'})
+    columns_to_display = ['numb_of_transactions', 'total', 'currency', 'exchange_rate', 'inflation_rate']
+    print(result[columns_to_display])
+    # how many unique customers?
+    #print(df['transaction_id'].nunique())

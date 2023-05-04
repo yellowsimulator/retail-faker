@@ -11,7 +11,9 @@ from products import generate_random_product_data
 fake = Faker()
 
 
-def generate_random_transaction_data(num_transactions: int, is_saved: bool = False):
+def generate_random_transaction_data(num_transactions: int,
+                                     numb_unique_ids: int,
+                                     is_saved: bool = False):
     """Generate a list of transactions for customers.
 
     Parameters
@@ -24,25 +26,38 @@ def generate_random_transaction_data(num_transactions: int, is_saved: bool = Fal
         a list of transactions as dictionaries
     """
     file_path = Path('retail_data/products.parquet')
-    products = pd.read_parquet('products.parquet')
+    products = pd.read_parquet(file_path)
     m = len(products)
     transactions = []
     numb = f'{num_transactions:,}'.replace(',', ' ')
-
+    unique_ids = [str(uuid.uuid4()) for _ in range(numb_unique_ids)]
     for k in tqdm(range(num_transactions), desc=f"Generating {numb} transactions"):
-        transaction_id = str(uuid.uuid4())
+        transaction_id = random.choice(unique_ids)
         timestamp = datetime.now() - timedelta(days=random.randint(0, 365))
         quantity = random.randint(1, 30)
         random_product_row = products.sample(n=1)
+        #print(random_product_row.iloc[0]['price_in_usd'])
+        try:
+            price = (random_product_row.iloc[0]['price_in_usd'])/(random_product_row.iloc[0]['exchange_rate'])
+            total = round(quantity * random_product_row.iloc[0]['price_in_usd']/random_product_row.iloc[0]['exchange_rate'], 2)
+            currency = random_product_row.iloc[0]['currency']
+            exchange_rate = random_product_row.iloc[0]['exchange_rate']
+        except TypeError:
+            price = random_product_row.iloc[0]['price_in_usd']
+            exchange_rate = None
+            total = round(quantity * random_product_row.iloc[0]['price_in_usd'], 2)
+            currency = 'USD'
         transaction = {
             'transaction_id': transaction_id,
             'timestamp': timestamp.strftime('%Y-%m-%d %H:%M:%S'),
             'product_id': random_product_row.iloc[0]['product_id'],
             'product_name': random_product_row.iloc[0]['product_name'],
             'quantity': quantity,
-            'price': random_product_row.iloc[0]['price_in_usd']*random_product_row.iloc[0]['exchange_rate'],
-            'currency': random_product_row.iloc[0]['currency'],
-            'total': round(quantity * random_product_row.iloc[0]['price_in_usd']*random_product_row.iloc[0]['exchange_rate'], 2),
+            'price': price,
+            'exchange_rate': exchange_rate,
+            'currency': currency,
+            'inflation_rate': random_product_row.iloc[0]['inflation_rate'],
+            'total': total
         }
         transactions.append(transaction)
 
