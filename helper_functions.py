@@ -33,6 +33,7 @@ def save_data(df: pd.DataFrame, file_path: str) -> None:
     table = pa.Table.from_pandas(df)
     save_to = folder_path / file_path
     pq.write_table(table, save_to)
+    return
 
 
 
