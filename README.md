@@ -2,8 +2,7 @@
 
 This is a package to generate fake retail data. It is based upon the python library Faker. Although still in development, you can start using it.
 
-The main entry point is the moduel *retail_faker.py.* You can run this file and the program will generate three parquets files in the folder retail_data: *retail_data/products.parquet, retail_data/stores.parquet, retail_data/transactions.*
-
+The main entry point is the module *retail_faker.py. This module relies on three other modules (helper_functions.py, stores.py, transactions.py, products.py), each one generating data for stores, products and transaction.* You can run this file and the program will generate three parquets files in the folder retail_data: *retail_data/products.parquet, retail_data/stores.parquet, retail_data/transactions.*
 
 ### Contribution
 
