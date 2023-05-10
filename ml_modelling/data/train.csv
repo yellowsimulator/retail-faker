@@ -1,13 +1,104 @@
 input_text,target_text
-"generate product name: Grocery & Gourmet Foods, Beverages",Organic Green Tea Bags
-"generate product name: Grocery & Gourmet Foods, Snacks & Sweets",Chocolate Chip Cookies
-"generate product name: Grocery & Gourmet Foods, Pantry Staples",Extra Virgin Olive Oil
-"generate product name: Grocery & Gourmet Foods, Baking & Cooking Supplies",Pure Vanilla Extract
-"generate product name: Grocery & Gourmet Foods, Organic & Healthy Foods",Gluten-Free Quinoa Pasta
-"generate product name: Grocery & Gourmet Foods, International Foods",Italian Tomato Basil Pasta Sauce
-"generate product name: Grocery & Gourmet Foods, Beverages",Cold Brew Coffee Concentrate
-"generate product name: Grocery & Gourmet Foods, Snacks & Sweets",Sour Gummy Worms
-"generate product name: Grocery & Gourmet Foods, Pantry Staples",Raw Almonds
-"generate product name: Grocery & Gourmet Foods, Baking & Cooking Supplies",Organic Coconut Sugar
-"generate product name: Grocery & Gourmet Foods, Organic & Healthy Foods",Vegan Protein Powder
-"generate product name: Grocery & Gourmet Foods, International Foods",Japanese Ramen Noodles
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Green Tea Bags
+"generate product name: Grocery & Gourmet Foods,  Beverages",Freshly Squeezed Lemonade Mix
+"generate product name: Grocery & Gourmet Foods,  Beverages",Natural Raspberry Fruit Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pure Almond Milk Unsweetened
+"generate product name: Grocery & Gourmet Foods,  Beverages",Exotic Mango Smoothie Blend
+"generate product name: Grocery & Gourmet Foods,  Beverages",Roasted Arabica Coffee Beans
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Acai Berry Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Premium Pomegranate Iced Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Decaf Earl Grey Tea Bags
+"generate product name: Grocery & Gourmet Foods,  Beverages",100% Pure Coconut Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Sparkling Mineral Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Refreshing Ginger Ale
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Soy Milk Vanilla
+"generate product name: Grocery & Gourmet Foods,  Beverages",Traditional English Breakfast Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Tropical Pineapple Soda
+"generate product name: Grocery & Gourmet Foods,  Beverages",Dark Roast Ground Coffee
+"generate product name: Grocery & Gourmet Foods,  Beverages",Cold Brew Coffee Concentrate
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Chamomile Herbal Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",All-Natural Cranberry Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Healthy Green Smoothie Mix
+"generate product name: Grocery & Gourmet Foods,  Beverages",Sugar-Free Energy Drink
+"generate product name: Grocery & Gourmet Foods,  Beverages",Highland Spring Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Fair Trade Cocoa Powder
+"generate product name: Grocery & Gourmet Foods,  Beverages",Exotic Dragon Fruit Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pure Hazelnut Milk Unsweetened
+"generate product name: Grocery & Gourmet Foods,  Beverages",Cold-pressed Avocado Smoothie
+"generate product name: Grocery & Gourmet Foods,  Beverages",Columbian Dark Roast Coffee Beans
+"generate product name: Grocery & Gourmet Foods,  Beverages",Raw Organic Goji Berry Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Luxury Darjeeling Tea Bags
+"generate product name: Grocery & Gourmet Foods,  Beverages",Decaffeinated Chai Latte Mix
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pure Prickly Pear Cactus Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pink Grapefruit Sparkling Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Traditional Root Beer Soda
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Hemp Milk Unsweetened
+"generate product name: Grocery & Gourmet Foods,  Beverages",Artisanal Ethiopian Coffee Blend
+"generate product name: Grocery & Gourmet Foods,  Beverages",Refreshing Guava Fruit Soda
+"generate product name: Grocery & Gourmet Foods,  Beverages",French Vanilla Ground Coffee
+"generate product name: Grocery & Gourmet Foods,  Beverages",Nitro Cold Brew Coffee Can
+"generate product name: Grocery & Gourmet Foods,  Beverages",Soothing Lavender Herbal Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pure Pomegranate Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Boosting Berry Smoothie Mix
+"generate product name: Grocery & Gourmet Foods,  Beverages",Zero-Sugar Grape Energy Drink
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pure Tart Cherry Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Maca Root Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Authentic Masala Chai Tea Bags
+"generate product name: Grocery & Gourmet Foods,  Beverages",Tangy Kiwi Fruit Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Bold Espresso Coffee Beans
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Cold-Pressed Carrot Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Natural Cashew Milk Unsweetened
+"generate product name: Grocery & Gourmet Foods,  Beverages",Blood Orange Sparkling Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Rooibos Herbal Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Refreshing Lemon Balm Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pure Maple Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Italian Style Soda Syrup
+"generate product name: Grocery & Gourmet Foods,  Beverages",Natural Pistachio Milk
+"generate product name: Grocery & Gourmet Foods,  Beverages",Honey Infused Green Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Cold Pressed Celery Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Sicilian Lemon Italian Soda
+"generate product name: Grocery & Gourmet Foods,  Beverages",Caffeine-Free Ginger Root Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Unsweetened Blackcurrant Cordial
+"generate product name: Grocery & Gourmet Foods,  Beverages",Antioxidant Rich Berry Smoothie Mix
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic White Peony Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Low-Sugar Orange Sports Drink
+"generate product name: Grocery & Gourmet Foods,  Beverages",Single Origin Guatemalan Coffee
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Barley Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Sweet Peach Iced Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Crushed Watermelon Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Spiced Cinnamon Apple Cider
+"generate product name: Grocery & Gourmet Foods,  Beverages",Matcha Green Tea Latte Mix
+"generate product name: Grocery & Gourmet Foods,  Beverages",Natural Black Sesame Milk
+"generate product name: Grocery & Gourmet Foods,  Beverages",Exotic Papaya Fruit Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Echinacea Herbal Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Refreshing Lychee Iced Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pure Birch Tree Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Sugar-Free Cherry Cola
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Chai Spiced Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Cold Pressed Wheatgrass Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Zesty Lime Italian Soda
+"generate product name: Grocery & Gourmet Foods,  Beverages",Caffeine-Free Rooibos Red Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Natural Passionfruit Cordial
+"generate product name: Grocery & Gourmet Foods,  Beverages",Energizing Spirulina Smoothie Mix
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Yerba Mate Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Low-Calorie Berry Sports Drink
+"generate product name: Grocery & Gourmet Foods,  Beverages",Sumatran Dark Roast Coffee
+"generate product name: Grocery & Gourmet Foods,  Beverages",Artisanal Jasmine Green Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Sugar-Free Cherry Lemonade
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Passion Fruit Smoothie
+"generate product name: Grocery & Gourmet Foods,  Beverages",Caramel Flavored Coffee Syrup
+"generate product name: Grocery & Gourmet Foods,  Beverages",Plant-Based Walnut Milk
+"generate product name: Grocery & Gourmet Foods,  Beverages",Natural Blackberry Fruit Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Immune Boosting Herbal Tea Blend
+"generate product name: Grocery & Gourmet Foods,  Beverages",Artisanal Matcha Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Wild Blueberry Infused Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Zero Calorie Tonic Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Creamy Cashew Nut Milk
+"generate product name: Grocery & Gourmet Foods,  Beverages",Handcrafted Root Beer
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Cold Pressed Kale Juice
+"generate product name: Grocery & Gourmet Foods,  Beverages",Mint Infused Sparkling Water
+"generate product name: Grocery & Gourmet Foods,  Beverages",Pure Elderflower Cordial
+"generate product name: Grocery & Gourmet Foods,  Beverages",Probiotic Rich Kombucha Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Organic Turmeric Ginger Tea
+"generate product name: Grocery & Gourmet Foods,  Beverages",Superfood Spinach Smoothie Mix
+"generate product name: Grocery & Gourmet Foods,  Beverages",Low-Sugar Lemon Sports Drink

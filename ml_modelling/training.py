@@ -36,7 +36,7 @@ training_args = Seq2SeqTrainingArguments(
     evaluation_strategy="steps",
     eval_steps=500,
     logging_steps=100,
-    learning_rate=3e-4,
+    learning_rate=3e-3,
     warmup_steps=200,
 )
 
