@@ -16,14 +16,11 @@ from forex_python.converter import CurrencyRates
 from ydata_profiling import ProfileReport
 from weasyprint import HTML
 
-import sweetviz as sv
-
-def generate_sweetviz_report(df, html_filename):
-    # Create a Sweetviz report from the DataFrame
-    report = sv.analyze(df)
-
-    # Save the report as an HTML file
-    report.show_html(f'{html_filename}.html')
+def get_product_names():
+    """Get a list of product names from the Seq2Seq
+       model.
+    """
+    ...
 
 
 def save_data(df: pd.DataFrame, file_path: str) -> None:
@@ -312,10 +309,6 @@ def get_cities_in_subdivision(country_name: str,
 
 
 if __name__=='__main__':
-    title = 'Product Categories'
-    file_name = 'products_report'
-    df = pd.read_parquet('retail_data/products.parquet')
-    generate_sweetviz_report(df, file_name)
-    #generate_report(df, title, file_name)
+    ...
 
 
