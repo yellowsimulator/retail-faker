@@ -165,3 +165,5 @@ ml
 shap
 retail_data
 models
+*.gif
+*.mp4
